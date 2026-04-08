@@ -124,8 +124,13 @@ let kiche = setInterval(()=>{
 				}
 
 				if((e.altKey == true)&&(e.key == "n")){
-					if(!!(document.querySelector("div.msisdn ").nextSibling)){
+					if(!!(document.querySelector("div.msisdn "))){
 						misal = document.querySelector("div.msisdn ").nextSibling.innerText
+						kiCopyText(misal);
+					}
+					
+					if(!!(document.querySelector("#app > div > main > div > div > div.appcontent > div.config-validation-component.tile.full-height > div > div.content > div.content > div > ul > li:nth-child(1) > div.root.content > div > div:nth-child(4) > div > div:nth-child(1)"))){
+						misal = "Old Customer Name : "+document.querySelector("#app > div > main > div > div > div.appcontent > div.config-validation-component.tile.full-height > div > div.content > div.content > div > ul > li:nth-child(3) > form > div.root > div > div:nth-child(6)").innerText+" "+document.querySelector("#app > div > main > div > div > div.appcontent > div.config-validation-component.tile.full-height > div > div.content > div.content > div > ul > li:nth-child(3) > form > div.root > div > div:nth-child(8)").innerText+"\nCustomer's ID : "+document.querySelector("#app form > section.identification div[data-test=\"id-number\"]").innerText
 						kiCopyText(misal);
 					}
 				}
