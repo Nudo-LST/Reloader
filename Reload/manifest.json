@@ -1,0 +1,70 @@
+{
+
+  "manifest_version": 3,
+  "name": "Reload",
+  "version": "1.0",
+
+  "description": "Adds a red border to all webpages matching mozilla.org.",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "permissions": [
+    "alarms","storage","notifications"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["http://10.254.9.51:8086/","http://10.169.104.140:6001/","https://cc.mtn.co.sz/*","https://mtnvtuadmin.mtn.co.sz/admin","http://10.254.20.85:7788/*","http://10.254.20.72:8080/*","http://52.22.41.84/*","https://10.169.33.14:5443/","http://10.169.78.84:8080/*","http://10.254.9.51:8086/*","http://10.254.14.11:30004/*","https://10.103.0.26:38443/*","http://vidbuz.com/*","http://10.254.9.244:8086/*"],
+      "js": ["Nudo.js","casava.js","outlook.js","MoMo.js","InstaCeleb.js","Reload.js","MDS.js"]
+    },
+    {
+      "matches": ["http://10.107.12.49:8021/*","http://10.107.12.49/*"],
+      "js": ["Nudo.js","ecms.js","Reload.js"]
+    },
+    {
+      "matches": ["https://mtnvtuadmin.mtn.co.sz/admin/*"],
+      "js": ["Nudo.js","sl.js"]
+    },{
+      "matches": ["https://outlook.office.com/*","https://outlook.cloud.microsoft/*"],
+      "js": ["Nudo.js","outlook.js","outlookExtra.js"]
+    },{
+      "matches": ["https://mtnvtuadmin.mtn.co.sz/*"],
+      "js": ["Nudo.js","sm.js"]
+    },
+    {
+      "matches": ["http://10.156.144.147:16443/*"],
+      "js": ["Nudo.js","NewMoMo.js","newMoMoAdd.js"]
+    },
+    {
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["Nudo.js","WhatsApp.js"]
+    },
+    {
+      "matches": ["https://cc.mtn.co.sz:16443/*","http://10.156.144.147:16443/*","https://10.156.144.147:16443/*"],
+      "js": ["Nudo.js","NewMoMo.js","newMoMoAdd.js"]
+    },
+    {
+      "matches": ["https://10.103.0.26:38443/UDN/Login.html"],
+      "js": ["Nudo.js","udn.js"]
+    },
+    {
+      "matches": ["https://10.103.208.136:28443/*"],
+      "js": ["Nudo.js","Newudn.js"]
+    },
+    {
+      "matches": ["https://vas-sm.mtn.co.sz/DSDP/*"],
+      "js": ["Nudo.js","Comviva.js"]
+    },
+    {
+      "matches": ["http://10.169.78.84:8080/SMCustomerCare/logoutAction","http://10.169.78.84:8080/SMCustomerCare/doLogin"],
+      "js": ["Nudo.js","455.js"]
+    },
+    {
+      "matches": ["*://*/*"],
+      "js": ["Notifications.js"]
+    }
+  ]
+
+}
