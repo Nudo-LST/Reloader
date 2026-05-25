@@ -3,6 +3,9 @@ if(document.title == 'Request Rejected'){
     open(window.history.state.back,"_self");
 }
 
+// chrome.storage.sync.get(["reload"]).then((result) => {
+//   console.log("Value is " + result.reload["User"]);
+// });
 
 ji = document.createElement("div")
 document.body.append(ji)
@@ -108,6 +111,13 @@ let kiche = setInterval(()=>{
 					kiCopyText(misal);
 					
 				}
+
+				
+
+				if((e.altKey == true)&&(e.key == "s")){
+					debugger
+					get_storage()
+				}
 				
 				if((e.altKey == true)&&(e.key == "i")){
 					if(!!(document.querySelector("#app form > section.identification div[data-test=\"id-number\"]"))){
@@ -121,6 +131,23 @@ let kiche = setInterval(()=>{
 					}
 					
 					
+				}
+
+				if((e.altKey == true)&&(e.key == "c")){
+					debugger
+					if(!!(document.querySelector("#app > div > main > div > div > div.appcontent > div:nth-child(3) > div:nth-child(1)"))){
+						if(!!(document.querySelector("#app > div > main > div > div > div.appcontent > div:nth-child(3) > div:nth-child(1)").innerText.includes("Profile\nMTNSZ Merchant MM Agent Limit Profile"))){
+							chrome.storage.sync.get(["reload"]).then((result) => {
+								console.log("The returned data :")
+								console.log(result)
+								result = result['reload']
+								result['MoMo']['MoMoAgent']['Name'] = document.querySelector("#app > div > main > div > div > div.appcontent > div:nth-child(3) > div:nth-child(1) div.full-name").nextElementSibling.innerText
+								result.MoMo.MoMoAgent.Number = document.querySelector("#app > div > main > div > div > div.appcontent > div:nth-child(3) > div:nth-child(1) div.msisdn").nextElementSibling.innerText
+								set_storage(result)						
+							});
+							
+						}
+					}
 				}
 
 				if((e.altKey == true)&&(e.key == "n")){
@@ -165,8 +192,17 @@ let kiche = setInterval(()=>{
 			    if((e.ctrlKey == true)&&(e.keyCode == 191)){
 					cp = ""
 					if(!!(document.querySelector("#app div.item.pin-reset-account-holder"))){
+						let rson = [
+							"Someone else blocked the account",
+							"The customer used the old pin, instead of the new one",
+							"Can't remember the old pin",
+							"There are two MoMo numbers on the same phone, so the customer used the pin for the other account"
+						]
 						document.querySelector("#app div.item.pin-reset-account-holder").click();
-						cp = "Customer requests."
+						cp = rson[Math.floor(Math.random() * rson.length)]
+						if((e.key == "q")){
+							cp = rson[0]
+						}
 					}
 					debugger
 					if(!!(document.querySelector(".revive-account"))){
@@ -189,9 +225,14 @@ let kiche = setInterval(()=>{
 					cp = ""
 					if(!!(document.querySelector("#app div.item.pin-reset-account-holder"))){
 						document.querySelector("#app div.item.pin-reset-account-holder").click();
-						cp = "Customer requests."
+						let rson = [
+							"Someone else blocked the account",
+							"The customer used the old pin, instead of the new one",
+							"There are two MoMo numbers on the same phone, so the customer used the pin for the other account"
+						]
+						cp = rson[Math.floor(Math.random() * rson.length)]
 					}
-					debugger
+					
 					if(!!(document.querySelector(".revive-account"))){
 						debugger
 						document.querySelector(".revive-account").click();

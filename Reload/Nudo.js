@@ -3,15 +3,19 @@ var kAudio = new Audio(chrome.runtime.getURL("tones/app.mp3"));
 log = console.log
 
 function kiCopyText(text) {
-  	copyPromise = navigator.clipboard.writeText(text)
-      .writeText(copyText.value)
-      .then(() => {
-        log("successfully copied");
-      })
-      .catch(() => {
-        log("something went wrong");
-      });
-    log("The promise is ",copyPromise)
+  	// copyPromise = navigator.clipboard.writeText(text)
+    //   .writeText(copyText.value)
+    //   .then(() => {
+    //     log("successfully copied");
+    //   })
+    //   .catch(() => {
+    //     log(err => console.error('Failed to copy: ', err));
+    //   });
+    // log("The promise is ",copyPromise)
+
+    navigator.clipboard.writeText(text)
+  .then(() => console.log('Text copied!'))
+  .catch(err => console.error('Failed to copy: ', err));
 }
 
 function restrictAlphabets(e) {

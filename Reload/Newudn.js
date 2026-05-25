@@ -19,7 +19,7 @@ liko.querySelectorAll("span")[0].addEventListener("click",()=>{
 });
 
 liko.querySelectorAll("span")[1].addEventListener("click",()=>{
-    kiCopyText("KcmQ8BV37f$UB3ln");
+    kiCopyText("DDSThwala@674");
 });
 
 
