@@ -17,19 +17,20 @@ liko.innerHTML = ".material-symbols-outlined {font-variation-settings:'FILL' 0,'
 document.querySelector("head").append(liko);
 
 document.addEventListener("keydown", async function(e){
+    document.body.querySelectorAll("*")[0].click()
     if((e.ctrlKey == true)&&(e.keyCode == 226)){
         kilo = document.createElement("div")
         document.body.appendChild(kilo)
-        kilo.innerHTML = '<div><span class="material-symbols-outlined" style="cursor: pointer;">close</span></div>'
+        kilo.innerHTML = '<div><span class="material-symbols-outlined" style="cursor: pointer;color: white;">close</span></div>'
         kilo.setAttribute("style","position: fixed;top: 0px;left: 0px;width: 100vw;height: 100vh;z-index: 9999;background: #000000e3;display: flex;justify-content: center;align-items: center;")
         kilo.querySelector("div").setAttribute("style","max-width: 800px;min-width: 200px;width: 500px;background: grey;min-height: 20vh;height: 80vh;border: solid #808080 2px;border-radius: 5px;")
-        kilo.querySelector("span").setAttribute("style","cursor: pointer;position: relative;right: -98%;top: -15px;")
+        kilo.querySelector("span").setAttribute("style","cursor: pointer;color: white;position: relative;right: -98%;top: -15px;")
         kilo.querySelector("span").addEventListener("click",()=>{
             kilo.remove()
         })
         shasha = '<div style="height: calc(100% - 99px);overflow-y: scroll;">'
         for (const item of genresp) {
-          shasha += '<div style="color: white;border: 2px #ffffff solid;padding: 20px;cursor: pointer;border-radius: 3px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;height: fit-content; max-height:100px;text-wrap: pretty;">'
+          shasha += '<div style="color: white;border: 2px #ffffff solid;padding: 20px;cursor: pointer;border-radius: 3px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;height: 100px; max-height:fit-content;text-wrap: pretty;">'
           shasha += item
           shasha += '</div>'
         }
@@ -49,7 +50,17 @@ document.addEventListener("keydown", async function(e){
               kiCopyText(item.innerText)
             }
             kilo.remove()
-          })
+          });
+
+          item.addEventListener('mouseleave',()=>{
+              item.style.height = '100px';
+              item.style.removeProperty("background-color")
+          });
+
+          item.addEventListener('mouseenter',()=>{
+              item.style.height = 'fit-content';
+              item.style.backgroundColor = '#4d4d4d'
+          });
         }
         kilo_search = document.createElement('div')
         kilo_search.setAttribute("style","display: flex;align-items: center;margin: 20px 0px;top: 0px;align-content: center;justify-content: space-between;flex-direction: column;")
